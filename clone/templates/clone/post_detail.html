@@ -1,0 +1,41 @@
+{%extends 'clone/base.html'%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+{% block content %}
+{{block.super}}
+       
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt="">
+        {% if post.cover %}
+                <img src="{{ object.cover.url}}" alt="{{ post.title }}" width="300" height="300">
+              {% else %}
+              <p></p>
+               {% endif %} 
+        <div class="media-body">
+            <div class="article-metadata">
+                <h2> {{ object.author }} </h2>
+                {% if object.author == user %}
+                <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+                </div>
+                {% endif %}
+                <small class="text-muted">{{ object.pub_date|timesince }} ago </small>
+            </div>
+            <h2 class="article-title">{{ object.title }} </h2>
+            <p class="article-content"> {{ object.content }} </p>
+        </div>
+    </article>
+
+{% endblock %}
+
+</body>
+</html>
