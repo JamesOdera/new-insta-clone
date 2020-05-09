@@ -13,20 +13,13 @@
 {{block.super}}
 
     <h1>Insta-clone App</h1>
-
-    <div class="blog">
-        <div class="box">
-            <h1 style="font-size: 50px; font-family: 'Dancing Script', cursive; font-weight: 900; color:rgb(149, 53, 69); "> Welcome To My </h1>
-            <h1 class='text-center' style="font-family: 'Dancing Script', cursive; font-weight: 900; font-size: 60px; color: purple;"> INSTAGRAM CLONE APP</h1>
-        </div>
-        </div>
         <hr>
     
     <div class="container-fluid display">
         
         </div>
         {% for post in posts %}
-        <div class="col-md-7">
+        <!-- <div class="col-md-7">
          <div class="panel panel-default">
              <div class="panel-heading">
                 <img class="img-circle" src=" {{ post.author.profile.image.url }} " width="50" height="50">
@@ -46,8 +39,30 @@
                  <h2><a href="{% url 'post-detail' post.id %}"> {{ post.title }}</a> </h2>
                 
              </div>
-             </div>
+             </div> -->
+
+             <div class="card text-center">
+                <div class="card-header">
+                    <img class="rounded-circle article-img" src=" {{ post.author.profile.image.url }} " width="50" height="50">
+                    <p> {{ post.author }} </p>
+                </div>
+               
+                    {% if post.cover %}
+                <img class="card-img-top" src="{{ post.cover.url}}" alt="{{ post.title }}">
+              {% else %}
+              <p></p>
+               {% endif %} 
+                  
+                <div class="card-footer text-muted">
+                    <p>Posted {{ post.pub_date|timesince }} ago </p>
+                
+                <h2><a href="{% url 'post-detail' post.id %}"> {{ post.title }}</a> </h2>
+                </div>
+              </div>
+              <br>
+              <br>
         {% endfor %}
+        <br>
     
 
 {% endblock %}
