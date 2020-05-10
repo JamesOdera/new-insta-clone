@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http  import HttpResponse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 import datetime as dt
-from .models import Post
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin 
+from .models import Post, Comment
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from users.forms import * 
 
 
 def index(request):

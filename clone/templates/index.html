@@ -12,11 +12,11 @@
 {% block content %}
 {{block.super}}
 
-    <h1>Insta-clone App</h1>
+   
         <hr>
     
-    <div class="container-fluid display">
-        
+    <div class="container-fluid display" style="margin-top: 50px;">
+         <h1>Insta-clone App</h1>
         </div>
         {% for post in posts %}
         <!-- <div class="col-md-7">
@@ -41,7 +41,7 @@
              </div>
              </div> -->
 
-             <div class="card text-center">
+             <div class="card">
                 <div class="card-header">
                     <img class="rounded-circle article-img" src=" {{ post.author.profile.image.url }} " width="50" height="50">
                     <p> {{ post.author }} </p>

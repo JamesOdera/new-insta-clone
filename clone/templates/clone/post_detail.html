@@ -35,6 +35,14 @@
         </div>
     </article>
 
+    <div class="comment">
+        {{ comments.count }} Comment {{ comments|pluralize }}
+        {% for comment in comments %}
+        <h2> {{ comment.content }} </h2>
+        <h2> {{ comment.user|capfirst }} </h2>
+        {% endfor %}
+    </div>
+
 {% endblock %}
 
 </body>
