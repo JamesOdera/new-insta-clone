@@ -12,10 +12,10 @@
 {% block content %}
 {{block.super}}
        
-    <article class="media content-section">
+    <!-- <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt="">
         {% if post.cover %}
-                <img src="{{ object.cover.url}}" alt="{{ post.title }}" width="300" height="300">
+                <img src="{{ object.cover.url}}" alt="{{ object.title }}" width="300" height="300">
               {% else %}
               <p></p>
                {% endif %} 
@@ -33,7 +33,35 @@
             <h2 class="article-title">{{ object.title }} </h2>
             <p class="article-content"> {{ object.content }} </p>
         </div>
-    </article>
+    </article> -->
+
+    <div class="card">
+        <div class="card-header">
+            <img class="rounded-circle article-img" src=" {{ object.author.profile.image.url }} " width="50" height="50">
+            <p> {{ post.author }} </p>
+        </div>
+       
+            {% if post.cover %}
+        <img class="card-img-top" src="{{ object.cover.url}}" alt="{{ object.title }}">
+      {% else %}
+      <p></p>
+       {% endif %} 
+          
+        <div class="card-footer text-muted">
+            <p>Posted {{ object.pub_date|timesince }} ago </p>
+        
+            <h2 class="article-title">{{ object.title }} </h2>
+            <p class="article-content"> {{ object.content }} </p>
+        </div>
+
+        <h2> {{ object.author }} </h2>
+                {% if object.author == user %}
+                <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+                </div>
+                {% endif %}
+      </div>
 
     <div class="comment">
         {{ comments.count }} Comment {{ comments|pluralize }}
