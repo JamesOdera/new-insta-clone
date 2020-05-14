@@ -22,6 +22,13 @@ class PostListView(ListView):
     ordering = ['-pub_date']
     template_name = 'index.html'
 
+
+    #  def get_queryset(self):
+    #   return Post.objects.all()
+
+    # def get_queryset(self):
+    #   return Comment.objects.order_by('id')
+
 class PostDetailView(DetailView):
     model = Post
 
